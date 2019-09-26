@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HW04_Group22</string>
+    <string name="button_add">Add Movie</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete Movie</string>
+    <string name="button_listYear">Show List By Year</string>
+    <string name="button_listRate">Show List By Rating</string>
+</resources>
