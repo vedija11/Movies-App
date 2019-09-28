@@ -5,4 +5,17 @@
     <string name="button_delete">Delete Movie</string>
     <string name="button_listYear">Show List By Year</string>
     <string name="button_listRate">Show List By Rating</string>
+    <string name="tv_name">Name:</string>
+    <string name="tv_desc">Description:</string>
+    <string name="tv_genre">Genre:</string>
+    <string name="tv_rating">Rating:</string>
+    <string name="tv_year">Year:</string>
+    <string name="tv_imdb">IMDB:</string>
+    <string name="addbutton">Add Movie</string>
+    <string name="savebutton">Save Changes</string>
+    <string name="tv_title">Title:</string>
+    <string name="tv_heading">Movies By Year</string>
+    <string name="button_finish">Finish</string>
+    <string name="tv_headingRating">Movies By Rating</string>
+    <string name="finishButtonR">Finish</string>
 </resources>

@@ -2,6 +2,8 @@ package com.example.hw04_group22;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button button_listYear;
     Button button_listRate;
 
-    ArrayList<String> movieList = new ArrayList<>();
+    ArrayList<Object> movieList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent addMovie = new Intent(MainActivity.this, AddMovieActivity.class);
-                addMovie.putExtra("MovieList", movieList);
+                //addMovie.putExtra("MovieList", movieList);
                 startActivity(addMovie);
                 finish();
             }
@@ -47,7 +49,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent edit = new Intent(MainActivity.this, EditActivity.class);
-                edit.putExtra("MovieList", movieList);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Pick a Movie");
+
+                builder.setItems(movieList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int name) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();*/
+                //edit.putExtra("MovieList", movieList);
                 startActivity(edit);
                 finish();
             }
@@ -57,7 +70,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent deleteMovie = new Intent(MainActivity.this, DeleteMovieActivity.class);
-                deleteMovie.putExtra("MovieList", movieList);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Pick a Movie");
+
+                builder.setItems(movieList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int name) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();*/
                 startActivity(deleteMovie);
                 finish();
             }
@@ -67,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent listYear = new Intent(MainActivity.this, DisplayListYearActivity.class);
-                listYear.putExtra("MovieList", movieList);
+                //listYear.putExtra("MovieList", movieList);
                 startActivity(listYear);
                 finish();
             }
@@ -77,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent listRating = new Intent(MainActivity.this, DisplayListRatingActivity.class);
-                listRating.putExtra("MovieList", movieList);
+                //listRating.putExtra("MovieList", movieList);
                 startActivity(listRating);
                 finish();
             }

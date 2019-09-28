@@ -17,7 +17,7 @@ public class AddMovieActivity extends AppCompatActivity {
     EditText et_movieName, et_desc, et_year, et_imdb;
     TextView tv_seekval,tv_genrelist ;
     SeekBar seekBar;
-    Button addButton;
+    Button addbutton;
 
     String[] genreList = {"Action", "Animation", "Comedy", "Documentry", "Family", "Horror", "Crime", "Others"};
 
@@ -38,9 +38,9 @@ public class AddMovieActivity extends AppCompatActivity {
         et_imdb = findViewById(R.id.et_imdb);
         tv_seekval = findViewById(R.id.tv_seekval);
         seekBar = findViewById(R.id.seekBar);
-        addButton = findViewById(R.id.addbutton);
+        addbutton = findViewById(R.id.addbutton);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+        addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //movieName = et_movieName.getText().toString();
@@ -79,7 +79,7 @@ public class AddMovieActivity extends AppCompatActivity {
                         tv_genrelist.setText(genreList[which]);
                     }
                 });
-                    AlertDialog dialog = builder.create();
+                AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
