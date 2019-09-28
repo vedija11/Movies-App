@@ -21,10 +21,6 @@ public class AddMovieActivity extends AppCompatActivity {
 
     String[] genreList = {"Action", "Animation", "Comedy", "Documentry", "Family", "Horror", "Crime", "Others"};
 
-    //String movieName = "";
-    //String description = "";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +39,6 @@ public class AddMovieActivity extends AppCompatActivity {
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //movieName = et_movieName.getText().toString();
-                //description = et_desc.getText().toString();
 
                 Toast.makeText(AddMovieActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
