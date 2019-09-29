@@ -9,9 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayListRatingActivity"></activity>
-        <activity android:name=".DisplayListYearActivity" />
-        <activity android:name=".DeleteMovieActivity" />
+        <activity android:name=".DisplayListRatingActivity">
+            <intent-filter>
+                <action android:name="com.example.hw04_group22.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DisplayListYearActivity">
+            <intent-filter>
+                <action android:name="com.example.hw04_group22.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".EditActivity" />
         <activity android:name=".AddMovieActivity" />
         <activity android:name=".MainActivity">

@@ -1,6 +1,7 @@
 package com.example.hw04_group22;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Movie implements Serializable {
@@ -63,7 +64,8 @@ public class Movie implements Serializable {
                 ", genre='" + genre + '\'' +
                 ", rating=" + rating +
                 ", year=" + year +
-        ", imdb='" + imdb + '\'' +
+                ", imdb='" + imdb + '\'' +
                 '}';
     }
+
 }

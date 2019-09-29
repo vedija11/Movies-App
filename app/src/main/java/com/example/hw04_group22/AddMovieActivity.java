@@ -6,11 +6,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +22,12 @@ import java.util.Arrays;
 public class AddMovieActivity extends AppCompatActivity {
 
     EditText et_movieName, et_desc, et_year, et_imdb;
-    TextView tv_seekval,tv_genrelist ;
+    TextView tv_seekval;
+    Spinner dd_genrelist;
     SeekBar seekBar;
     Button addbutton;
 
-    String[] genreList = {"Action", "Animation", "Comedy", "Documentry", "Family", "Horror", "Crime", "Others"};
+    String[] genreList = {"Select", "Action", "Animation", "Comedy", "Documentary", "Family", "Horror", "Crime", "Others"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,31 +37,51 @@ public class AddMovieActivity extends AppCompatActivity {
 
         et_movieName = findViewById(R.id.et_movieName);
         et_desc = findViewById(R.id.et_desc);
-        tv_genrelist = findViewById(R.id.tv_genrelist);
+        dd_genrelist = findViewById(R.id.tv_genrelist);
         et_year = findViewById(R.id.et_year);
         et_imdb = findViewById(R.id.et_imdb);
         tv_seekval = findViewById(R.id.tv_seekval);
         seekBar = findViewById(R.id.seekBar);
         addbutton = findViewById(R.id.addbutton);
 
+        tv_seekval.setText("0");
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genreList);
+        dd_genrelist.setAdapter(adapter);
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent putMovie = new Intent(AddMovieActivity.this, MainActivity.class);
-                Movie movie = new Movie();
-                movie.setName(et_movieName.getText().toString());
-                movie.setDescription(et_desc.getText().toString());
-                movie.setGenre(tv_genrelist.getText().toString());
-                movie.setRating(Integer.parseInt(tv_seekval.getText().toString()));
-                movie.setYear(Integer.parseInt(et_year.getText().toString()));
-                movie.setImdb(et_imdb.getText().toString());
+                if (TextUtils.isEmpty(et_movieName.getText()) || TextUtils.isEmpty(et_desc.getText()) || dd_genrelist.getSelectedItem().toString().equals("Select") || TextUtils.isEmpty(et_year.getText()) || TextUtils.isEmpty(et_imdb.getText())) {
+                    if (TextUtils.isEmpty(et_movieName.getText()))
+                        Toast.makeText(AddMovieActivity.this, "Enter Movie Name", Toast.LENGTH_SHORT).show();
+                    else if (TextUtils.isEmpty(et_desc.getText()))
+                        Toast.makeText(AddMovieActivity.this, "Enter Description", Toast.LENGTH_SHORT).show();
+                    else if (dd_genrelist.getSelectedItem().toString().equals("Select") )
+                        Toast.makeText(AddMovieActivity.this, "Select Genre", Toast.LENGTH_SHORT).show();
+                    else if (TextUtils.isEmpty(et_year.getText()))
+                        Toast.makeText(AddMovieActivity.this, "Enter Year", Toast.LENGTH_SHORT).show();
+                    else if (TextUtils.isEmpty(et_imdb.getText()))
+                        Toast.makeText(AddMovieActivity.this, "Enter IMDB Link", Toast.LENGTH_SHORT).show();
+                } else {
+//                    Intent putMovie = new Intent(AddMovieActivity.this, MainActivity.class);
+                    Movie movie = new Movie();
+                    movie.setName(et_movieName.getText().toString());
+                    movie.setDescription(et_desc.getText().toString());
+                    movie.setGenre(dd_genrelist.getSelectedItem().toString());
+                    movie.setRating(Integer.parseInt(tv_seekval.getText().toString()));
+                    movie.setYear(Integer.parseInt(et_year.getText().toString()));
+                    movie.setImdb(et_imdb.getText().toString());
+                    Intent putMovie = new Intent();
 
-                putMovie.putExtra("Movie", movie);
-                Log.d("movie in add activity", movie.toString());
-                Toast.makeText(AddMovieActivity.this, "Movie added", Toast.LENGTH_SHORT).show();
+                    putMovie.putExtra("Movie", movie);
+                    Log.d("movie in add activity", movie.toString());
+                    Toast.makeText(AddMovieActivity.this, "Movie added", Toast.LENGTH_SHORT).show();
 
-                startActivity(putMovie);
-                finish();
+//                    startActivity(putMovie);
+                    setResult(100,putMovie);
+                    finish();
+                }
             }
         });
 
@@ -75,23 +99,6 @@ public class AddMovieActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
-
-        tv_genrelist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddMovieActivity.this);
-                builder.setTitle("Select a Genre:");
-
-                builder.setItems(genreList, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        tv_genrelist.setText(genreList[which]);
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
             }
         });
     }

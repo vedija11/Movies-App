@@ -144,40 +144,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
-    <TextView
-        android:id="@+id/tv_genrelistEdit"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
-        app:layout_constraintStart_toEndOf="@+id/tv_genre"
-        app:layout_constraintTop_toBottomOf="@+id/et_descEdit" />
-
     <SeekBar
         android:id="@+id/seekBarEdit"
         android:layout_width="200dp"
         android:layout_height="36dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:max="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toEndOf="@+id/tv_rating"
-        app:layout_constraintTop_toBottomOf="@+id/tv_genrelistEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/dd_genrelistEdit" />
 
     <TextView
         android:id="@+id/tv_seekvalEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toEndOf="@+id/seekBarEdit"
-        app:layout_constraintTop_toBottomOf="@+id/tv_genrelistEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/dd_genrelistEdit"
+        tools:text="0" />
+
+    <Spinner
+        android:id="@+id/dd_genrelistEdit"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_genre"
+        app:layout_constraintTop_toBottomOf="@+id/et_descEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
