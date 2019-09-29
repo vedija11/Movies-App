@@ -4,18 +4,8 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Movie implements Serializable {
-    String name, description, imdb, genreList;
-    //String[] genreList = {"Action", "Animation", "Comedy", "Documentry", "Family", "Horror", "Crime", "Others"};
+    String name, description, imdb, genre;
     int rating, year;
-
-    public Movie(String name, String description, String genreList, int rating, int year, String imdb) {
-        this.name = name;
-        this.description = description;
-        this.imdb = imdb;
-        this.genreList = genreList;
-        this.rating = rating;
-        this.year = year;
-    }
 
     public String getName() {
         return name;
@@ -41,12 +31,12 @@ public class Movie implements Serializable {
         this.imdb = imdb;
     }
 
-    public String getGenreList() {
-        return genreList;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenreList(String genreList) {
-        this.genreList = genreList;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public int getRating() {
@@ -70,10 +60,10 @@ public class Movie implements Serializable {
         return "Movie{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", imdb='" + imdb + '\'' +
-                ", genreList=" + genreList +
+                ", genre='" + genre + '\'' +
                 ", rating=" + rating +
                 ", year=" + year +
+        ", imdb='" + imdb + '\'' +
                 '}';
     }
 }

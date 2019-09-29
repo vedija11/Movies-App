@@ -14,6 +14,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class AddMovieActivity extends AppCompatActivity {
 
     EditText et_movieName, et_desc, et_year, et_imdb;
@@ -41,18 +43,21 @@ public class AddMovieActivity extends AppCompatActivity {
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = et_movieName.getText().toString();
-                String desc = et_desc.getText().toString();
-                String genre = tv_genrelist.getText().toString();
-                int rating = Integer.parseInt(tv_seekval.getText().toString());
-                int year = Integer.parseInt(et_year.getText().toString());
-                String imdb = et_imdb.getText().toString();
-                Movie movie = new Movie(name, desc, genre, rating, year, imdb);
-
                 Intent putMovie = new Intent(AddMovieActivity.this, MainActivity.class);
+                Movie movie = new Movie();
+                movie.setName(et_movieName.getText().toString());
+                movie.setDescription(et_desc.getText().toString());
+                movie.setGenre(tv_genrelist.getText().toString());
+                movie.setRating(Integer.parseInt(tv_seekval.getText().toString()));
+                movie.setYear(Integer.parseInt(et_year.getText().toString()));
+                movie.setImdb(et_imdb.getText().toString());
+
                 putMovie.putExtra("Movie", movie);
-                Log.d("movie", movie.toString());
+                Log.d("movie in add activity", movie.toString());
                 Toast.makeText(AddMovieActivity.this, "Movie added", Toast.LENGTH_SHORT).show();
+
+                startActivity(putMovie);
+                finish();
             }
         });
 

@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent getMovie = getIntent();
         movieList.add((Movie) getMovie.getSerializableExtra("Movie"));
-        Log.d("MovieList", movieList.toString());
+        if(movieList!=null) {
+            Log.d("MovieList", movieList.toString());
+        }
 
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,14 +54,15 @@ public class MainActivity extends AppCompatActivity {
         button_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent edit = new Intent(MainActivity.this, EditActivity.class);
                 /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Pick a Movie");
 
-                builder.setItems(movieList, new DialogInterface.OnClickListener() {
+                builder.setItems(movieList.get(0), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int name) {
-                        movieList;
+
                     }
                 });
                 AlertDialog dialog = builder.create();
