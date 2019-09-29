@@ -46,13 +46,19 @@ public class DisplayListYearActivity extends AppCompatActivity {
         Collections.sort(MovieList, new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {
-                return o2.year>o1.year?0:1;
+                return o1.year-o2.year;
             }
         });
         Log.d("onCreate: ", MovieList.toString());
         final Movie currentMovie = MovieList.get(current_Index);
         setDisplay(currentMovie);
 
+        button_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

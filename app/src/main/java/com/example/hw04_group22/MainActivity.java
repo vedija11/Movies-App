@@ -133,12 +133,16 @@ public class MainActivity extends AppCompatActivity {
         button_listYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent listYear = new Intent("com.example.hw04_group22.intent.action.VIEW");
-                listYear.addCategory(Intent.CATEGORY_DEFAULT);
-                listYear.putExtra("Movie", movieList);
-                Intent chooser = Intent.createChooser(listYear, "Choose Page");
-                if (listYear.resolveActivity(getPackageManager()) != null) {
-                    startActivity(chooser);
+                if (movieList.size() == 0)
+                    Toast.makeText(getApplicationContext(), "No Movies to display", Toast.LENGTH_LONG).show();
+                else {
+                    Intent listYear = new Intent("com.example.hw04_group22.intent.action.VIEW");
+                    listYear.addCategory(Intent.CATEGORY_DEFAULT);
+                    listYear.putExtra("Movie", movieList);
+                    Intent chooser = Intent.createChooser(listYear, "Choose Page");
+                    if (listYear.resolveActivity(getPackageManager()) != null) {
+                        startActivity(chooser);
+                    }
                 }
             }
         });
@@ -146,12 +150,16 @@ public class MainActivity extends AppCompatActivity {
         button_listRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent listRating = new Intent("com.example.hw04_group22.intent.action.VIEW");
-                listRating.addCategory(Intent.CATEGORY_DEFAULT);
-                listRating.putExtra("Movie", movieList);
-                Intent chooser = Intent.createChooser(listRating, "Choose Page");
-                if (listRating.resolveActivity(getPackageManager()) != null) {
-                    startActivity(chooser);
+                if (movieList.size() == 0)
+                    Toast.makeText(getApplicationContext(), "No Movies to display", Toast.LENGTH_LONG).show();
+                else {
+                    Intent listRating = new Intent("com.example.hw04_group22.intent.action.VIEW");
+                    listRating.addCategory(Intent.CATEGORY_DEFAULT);
+                    listRating.putExtra("Movie", movieList);
+                    Intent chooser = Intent.createChooser(listRating, "Choose Page");
+                    if (listRating.resolveActivity(getPackageManager()) != null) {
+                        startActivity(chooser);
+                    }
                 }
             }
         });

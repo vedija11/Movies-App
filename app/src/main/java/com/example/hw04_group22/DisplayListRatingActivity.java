@@ -46,13 +46,19 @@ public class DisplayListRatingActivity extends AppCompatActivity {
         Collections.sort(MovieList, new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {
-                return o1.rating>o2.rating?0:1;
+                return o1.rating-o2.rating;
             }
         });
         Log.d("onCreate: ", MovieList.toString());
         final Movie currentMovie = MovieList.get(current_Index);
         setDisplay(currentMovie);
 
+        finishButtonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         nextButtonR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
