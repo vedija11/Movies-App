@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".DisplayListYearActivity" android:label="@string/Movies_by_year">
             <intent-filter>
-                <action android:name="com.example.hw04_group22.intent.action.VIEW" />
+                <action android:name="com.example.hw04_group22.intent.action.VIEW1" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

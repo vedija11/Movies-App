@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 if (movieList.size() == 0)
                     Toast.makeText(getApplicationContext(), "No Movies to display", Toast.LENGTH_LONG).show();
                 else {
-                    Intent listYear = new Intent("com.example.hw04_group22.intent.action.VIEW");
+                    Intent listYear = new Intent("com.example.hw04_group22.intent.action.VIEW1");
                     listYear.addCategory(Intent.CATEGORY_DEFAULT);
                     listYear.putExtra("Movie", movieList);
                     Intent chooser = Intent.createChooser(listYear, "Choose Page");

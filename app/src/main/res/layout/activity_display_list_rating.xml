@@ -232,7 +232,7 @@
         android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="Last"
-        android:scaleType="fitCenter"
+        android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/nextButtonR"
