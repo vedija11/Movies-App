@@ -37,15 +37,19 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case (REQ_CODE_ADD_MOVIE): {
                 if (AddMovieActivity.RESULT_OK == -1) {
-                    movieList.add((Movie) data.getSerializableExtra("Movie"));
-                    movieNameList.add(movieList.get(movieList.size() - 1).name);
+                    if(data !=null) {
+                        movieList.add((Movie) data.getSerializableExtra("Movie"));
+                        movieNameList.add(movieList.get(movieList.size() - 1).name);
+                    }
                 }
                 break;
             }
             case REQ_CODE_EDIT_MOVIE:
                 if (EditActivity.RESULT_OK == -1) {
-                    movieList.add((Movie) data.getSerializableExtra("Movie"));
-                    movieNameList.add(movieList.get(movieList.size() - 1).name);
+                    if(data !=null) {
+                        movieList.add((Movie) data.getSerializableExtra("Movie"));
+                        movieNameList.add(movieList.get(movieList.size() - 1).name);
+                    }
                 }
                 break;
         }
@@ -74,41 +78,48 @@ public class MainActivity extends AppCompatActivity {
         button_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (movieList.size() == 0)
+                    Toast.makeText(getApplicationContext(), "No Movies to edit", Toast.LENGTH_LONG).show();
+                else {
+                    final Intent edit = new Intent(MainActivity.this, EditActivity.class);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Pick a Movie");
 
-                final Intent edit = new Intent(MainActivity.this, EditActivity.class);
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Pick a Movie");
-
-                builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Movie temp = movieList.get(which);
-                        edit.putExtra("Movie", temp);
-                        movieList.remove(which);
-                        movieNameList.remove(which);
-                        startActivityForResult(edit, REQ_CODE_EDIT_MOVIE);
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Movie temp = movieList.get(which);
+                            edit.putExtra("Movie", temp);
+                            movieList.remove(which);
+                            movieNameList.remove(which);
+                            startActivityForResult(edit, REQ_CODE_EDIT_MOVIE);
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         });
 
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Pick a Movie");
-                builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        movieList.remove(which);
-                        movieNameList.remove(which);
-                        Toast.makeText(MainActivity.this, "Movie Deleted", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                if (movieList.size() == 0)
+                    Toast.makeText(getApplicationContext(), "No Movies to delete", Toast.LENGTH_LONG).show();
+                else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Pick a Movie");
+                    builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            movieList.remove(which);
+                            movieNameList.remove(which);
+                            Toast.makeText(MainActivity.this, "Movie Deleted", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         });
 
