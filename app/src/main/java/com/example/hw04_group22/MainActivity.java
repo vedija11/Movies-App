@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     List<CharSequence> movieNameList = new ArrayList<>();
     final int REQ_CODE_ADD_MOVIE = 100;
     final int REQ_CODE_EDIT_MOVIE = 200;
-
+    int position=0;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             case REQ_CODE_EDIT_MOVIE:
                 if (EditActivity.RESULT_OK == -1) {
                     if(data !=null) {
-                        movieList.add((Movie) data.getSerializableExtra("Movie"));
-                        movieNameList.add(movieList.get(movieList.size() - 1).name);
+                        movieList.add(position,(Movie) data.getSerializableExtra("Movie"));
+                        movieNameList.add(position,movieList.get(movieList.size() - 1).name);
                     }
                 }
                 break;
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Movie temp = movieList.get(which);
                             edit.putExtra("Movie", temp);
+                            position=which;
                             movieList.remove(which);
                             movieNameList.remove(which);
                             startActivityForResult(edit, REQ_CODE_EDIT_MOVIE);
