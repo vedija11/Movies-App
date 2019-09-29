@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,8 +41,18 @@ public class AddMovieActivity extends AppCompatActivity {
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name = et_movieName.getText().toString();
+                String desc = et_desc.getText().toString();
+                String genre = tv_genrelist.getText().toString();
+                int rating = Integer.parseInt(tv_seekval.getText().toString());
+                int year = Integer.parseInt(et_year.getText().toString());
+                String imdb = et_imdb.getText().toString();
+                Movie movie = new Movie(name, desc, genre, rating, year, imdb);
 
-                Toast.makeText(AddMovieActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                Intent putMovie = new Intent(AddMovieActivity.this, MainActivity.class);
+                putMovie.putExtra("Movie", movie);
+                Log.d("movie", movie.toString());
+                Toast.makeText(AddMovieActivity.this, "Movie added", Toast.LENGTH_SHORT).show();
             }
         });
 
