@@ -49,7 +49,6 @@ public class DisplayListRatingActivity extends AppCompatActivity {
                 return o1.rating-o2.rating;
             }
         });
-        Log.d("onCreate: ", MovieList.toString());
         final Movie currentMovie = MovieList.get(current_Index);
         setDisplay(currentMovie);
 

@@ -75,10 +75,7 @@ public class AddMovieActivity extends AppCompatActivity {
                     Intent putMovie = new Intent();
 
                     putMovie.putExtra("Movie", movie);
-                    Log.d("movie in add activity", movie.toString());
                     Toast.makeText(AddMovieActivity.this, "Movie added", Toast.LENGTH_SHORT).show();
-
-//                    startActivity(putMovie);
                     setResult(100,putMovie);
                     finish();
                 }

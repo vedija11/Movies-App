@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
     List<CharSequence> movieNameList = new ArrayList<>();
     final int REQ_CODE_ADD_MOVIE = 100;
     final int REQ_CODE_EDIT_MOVIE = 200;
-    final int REQ_CODE_DELETE_MOVIE = 300;
-//    final int REQ_CODE_ADD_MOVIE=100;
-//    final int REQ_CODE_ADD_MOVIE=100;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -42,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 if (AddMovieActivity.RESULT_OK == -1) {
                     movieList.add((Movie) data.getSerializableExtra("Movie"));
                     movieNameList.add(movieList.get(movieList.size() - 1).name);
-                    Log.d("MovieList in MainActivity", movieList.toString());
-                    Log.d("MovieList in MainActivity", movieNameList.toString());
                 }
                 break;
             }
@@ -51,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 if (EditActivity.RESULT_OK == -1) {
                     movieList.add((Movie) data.getSerializableExtra("Movie"));
                     movieNameList.add(movieList.get(movieList.size() - 1).name);
-                    Log.d("MovieList in MainActivity", movieList.toString());
-                    Log.d("MovieList in MainActivity", movieNameList.toString());
                 }
                 break;
         }
@@ -69,13 +62,6 @@ public class MainActivity extends AppCompatActivity {
         button_delete = findViewById(R.id.button_delete);
         button_listYear = findViewById(R.id.button_listYear);
         button_listRate = findViewById(R.id.button_listRate);
-
-//        Intent getMovie = getIntent();
-//        movieList.add((Movie) getMovie.getSerializableExtra("Movie"));
-//        if(movieList!=null) {
-//            Log.d("MovieList", movieList.toString());
-//        }
-
 
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d("Alert", "onClick: " + movieList.get(which).toString());
                         Movie temp = movieList.get(which);
                         edit.putExtra("Movie", temp);
                         movieList.remove(which);
@@ -106,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                //startActivity(edit);
-                //finish();
             }
         });
 
@@ -119,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d("Alert", "onClick: " + movieList.get(which).toString());
                         movieList.remove(which);
                         movieNameList.remove(which);
                         Toast.makeText(MainActivity.this, "Movie Deleted", Toast.LENGTH_SHORT).show();

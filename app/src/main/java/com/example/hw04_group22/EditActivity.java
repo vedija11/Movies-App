@@ -92,7 +92,6 @@ public class EditActivity extends AppCompatActivity {
                     //Intent putMovie = new Intent();
 
                     editMovie.putExtra("Movie", movie);
-                    Log.d("movie in edit activity", movie.toString());
                     Toast.makeText(EditActivity.this, "Movie Edited", Toast.LENGTH_SHORT).show();
                     setResult(200, editMovie);
                     finish();

@@ -49,7 +49,6 @@ public class DisplayListYearActivity extends AppCompatActivity {
                 return o1.year-o2.year;
             }
         });
-        Log.d("onCreate: ", MovieList.toString());
         final Movie currentMovie = MovieList.get(current_Index);
         setDisplay(currentMovie);
 
