@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +39,8 @@ public class DisplayListRatingActivity extends AppCompatActivity {
         nextButtonR = findViewById(R.id.nextButtonR);
         firstButtonR = findViewById(R.id.firstButtonR);
         lastButtonR = findViewById(R.id.lastButtonR);
+
+        et_descRating.setKeyListener(null);
 
         Intent ListByYear = getIntent();
         final ArrayList<Movie> MovieList = (ArrayList<Movie>) ListByYear.getSerializableExtra("Movie");
@@ -95,7 +96,7 @@ public class DisplayListRatingActivity extends AppCompatActivity {
         tv_titleRating.setText(currentMovie.getName());
         tv_genreRating.setText(currentMovie.getGenre());
         tv_yearRating.setText(String.valueOf(currentMovie.getYear()));
-        tv_movieRating.setText(String.valueOf(currentMovie.getRating()));
+        tv_movieRating.setText(String.valueOf(currentMovie.getRating()) + " / 5");
         et_descRating.setText(currentMovie.getDescription());
         tv_imdbRating.setText(currentMovie.getImdb());
     }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +13,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class EditActivity extends AppCompatActivity {
     EditText et_movieNameEdit, et_descEdit, et_yearEdit, et_imdbEdit;
@@ -81,6 +82,10 @@ public class EditActivity extends AppCompatActivity {
                         Toast.makeText(EditActivity.this, "Enter Year", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(et_imdbEdit.getText()))
                         Toast.makeText(EditActivity.this, "Enter IMDB Link", Toast.LENGTH_SHORT).show();
+                } else if (et_yearEdit.getText().length() == 4 && Integer.parseInt(et_yearEdit.getText().toString()) > Calendar.getInstance().get(Calendar.YEAR)) {
+                    Toast.makeText(EditActivity.this, "Year cannot be more than 2019", Toast.LENGTH_SHORT).show();
+                } else if (et_yearEdit.getText().length() < 4) {
+                    Toast.makeText(EditActivity.this, "Year should contain atleast 4 digits", Toast.LENGTH_SHORT).show();
                 } else {
                     Movie movie = new Movie();
                     movie.setName(et_movieNameEdit.getText().toString());
@@ -89,7 +94,6 @@ public class EditActivity extends AppCompatActivity {
                     movie.setRating(Integer.parseInt(tv_seekvalEdit.getText().toString()));
                     movie.setYear(Integer.parseInt(et_yearEdit.getText().toString()));
                     movie.setImdb(et_imdbEdit.getText().toString());
-                    //Intent putMovie = new Intent();
 
                     editMovie.putExtra("Movie", movie);
                     Toast.makeText(EditActivity.this, "Movie Edited", Toast.LENGTH_SHORT).show();

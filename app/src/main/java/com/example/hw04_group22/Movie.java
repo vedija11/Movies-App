@@ -1,8 +1,6 @@
 package com.example.hw04_group22;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Movie implements Serializable {
     String name, description, imdb, genre;

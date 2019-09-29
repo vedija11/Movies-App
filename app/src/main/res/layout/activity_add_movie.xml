@@ -148,12 +148,12 @@
         android:id="@+id/tv_seekval"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="36dp"
         android:gravity="center_horizontal"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toEndOf="@+id/seekBar"
         app:layout_constraintTop_toBottomOf="@+id/tv_genrelist"
         tools:text="0" />
@@ -165,6 +165,7 @@
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="number"
+        android:maxLength="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_year"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />

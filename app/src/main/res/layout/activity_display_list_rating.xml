@@ -10,11 +10,11 @@
         android:id="@+id/tv_genreRating"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toEndOf="@+id/tv_genre"
         app:layout_constraintTop_toBottomOf="@+id/et_descRating" />
 
@@ -22,11 +22,11 @@
         android:id="@+id/tv_movieRating"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toEndOf="@+id/tv_rating"
         app:layout_constraintTop_toBottomOf="@+id/tv_genreRating" />
 
@@ -38,13 +38,13 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toEndOf="@+id/tv_year"
         app:layout_constraintTop_toBottomOf="@+id/tv_movieRating" />
 
     <TextView
         android:id="@+id/tv_imdbRating"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="35dp"
         android:layout_marginTop="4dp"
         android:textSize="20sp"
@@ -149,10 +149,11 @@
         android:id="@+id/tv_titleRating"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_headingRating" />
 
@@ -166,18 +167,19 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:maxLength="1000"
+        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
     <ImageButton
         android:id="@+id/firstButtonR"
-        android:layout_width="96dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="First"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="@id/previousButtonR"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_imdbRating"
@@ -185,13 +187,13 @@
 
     <ImageButton
         android:id="@+id/previousButtonR"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="Previous"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/finishButtonR"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/firstButtonR"
         app:layout_constraintTop_toBottomOf="@+id/tv_imdbRating"
@@ -200,8 +202,8 @@
     <Button
         android:id="@+id/finishButtonR"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:text="@string/finishButtonR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -210,8 +212,8 @@
 
     <ImageButton
         android:id="@+id/nextButtonR"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
@@ -225,9 +227,8 @@
 
     <ImageButton
         android:id="@+id/lastButtonR"
-        android:layout_width="75dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="Last"

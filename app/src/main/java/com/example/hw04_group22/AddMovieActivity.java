@@ -2,12 +2,9 @@ package com.example.hw04_group22;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
+import java.util.Calendar;
 
 public class AddMovieActivity extends AppCompatActivity {
 
@@ -63,8 +60,11 @@ public class AddMovieActivity extends AppCompatActivity {
                         Toast.makeText(AddMovieActivity.this, "Enter Year", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(et_imdb.getText()))
                         Toast.makeText(AddMovieActivity.this, "Enter IMDB Link", Toast.LENGTH_SHORT).show();
+                } else if (et_year.getText().length() == 4 && Integer.parseInt(et_year.getText().toString()) > Calendar.getInstance().get(Calendar.YEAR)) {
+                    Toast.makeText(AddMovieActivity.this, "Year cannot be more than 2019", Toast.LENGTH_SHORT).show();
+                } else if (et_year.getText().length() < 4) {
+                    Toast.makeText(AddMovieActivity.this, "Year should contain atleast 4 digits", Toast.LENGTH_SHORT).show();
                 } else {
-//                    Intent putMovie = new Intent(AddMovieActivity.this, MainActivity.class);
                     Movie movie = new Movie();
                     movie.setName(et_movieName.getText().toString());
                     movie.setDescription(et_desc.getText().toString());

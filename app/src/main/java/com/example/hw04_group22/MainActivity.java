@@ -1,3 +1,9 @@
+/*
+Group No: 22
+Group Members: Neeraj Auti
+               Vedija Jagtap
+ */
+
 package com.example.hw04_group22;
 
 import androidx.annotation.Nullable;
@@ -7,15 +13,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -113,9 +115,10 @@ public class MainActivity extends AppCompatActivity {
                     builder.setItems(movieNameList.toArray(new CharSequence[movieNameList.size()]), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            String movieTitle = movieNameList.get(which).toString();
                             movieList.remove(which);
                             movieNameList.remove(which);
-                            Toast.makeText(MainActivity.this, "Movie Deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Movie '" + movieTitle + "' Deleted!", Toast.LENGTH_SHORT).show();
                         }
                     });
                     AlertDialog dialog = builder.create();
